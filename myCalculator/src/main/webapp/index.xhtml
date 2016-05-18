@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</h:head>
+	<h:body>
+
+
+		<h:form id="calcForm">
+		<p:growl id="messages"/>
+
+			<h:panelGrid id="logPanelGrid"
+				style="background-color:#D9E5E7; margin: 0 auto; margin-top: 25px; text-align: left"
+				cellspacing="8" columns="1">
+
+				<h:panelGroup>
+					<h:inputText id="ans" value="#{calculationListController.resultExpression}"
+						style="width:137px; height:25px; text-align: right" />
+				</h:panelGroup>
+
+				<h:panelGroup>
+					<h:commandButton action="#{calculationListController.addToEditSeven()}"
+						value="7" style="width:25px; height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditEight()}"
+						value="8" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditNine()}" value="9"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditDivide()}"
+						value="/" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditClear()}"
+						value="C" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+				</h:panelGroup>
+
+				<h:panelGroup>
+					<h:commandButton action="#{calculationListController.addToEditFour()}" value="4"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditFive()}" value="5"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditSix()}" value="6"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditMultiply()}"
+						value="*" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditBackSpace()}" value="←"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+				</h:panelGroup>
+
+				<h:panelGroup>
+					<h:commandButton action="#{calculationListController.addToEditOne()}" value="1"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditTwo()}" value="2"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditThree()}"
+						value="3" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditPlus()}" value="+"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					
+					<h:commandButton action="#{calculationListController.addToEditPow()}" value="^"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+				</h:panelGroup>
+
+				<h:panelGroup>
+					<h:commandButton action="#{calculationListController.addToEditZero()}" value="0"
+						style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditLeftBracket()}"
+						value="(" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditRightBracket()}"
+						value=")" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.addToEditMinus()}"
+						value="-" style="width:25px;height:25px" />
+					<h:outputText value=" " />
+					<h:commandButton action="#{calculationListController.eval()}" update="exprTable" 
+						value="=" style="width:25px;height:25px"/>
+					<h:outputText value=" " />
+				</h:panelGroup>
+
+			</h:panelGrid>
+		
+
+		<br />
+		<br />
+		<br />
+		<br />
+
+
+		<p:dataTable id="exprTable" value="#{calculationListController.calculations}"
+			var="calculation">
+			<p:column headerText="Infix Expression">
+			#{calculation.infixExpression}
+		</p:column>
+			<p:column headerText="Postfix Expression">
+			#{calculation.postfixExpression}
+		</p:column>
+			<p:column headerText="Answer">
+			#{calculation.answer}
+		</p:column>
+			<p:column style="width:15px">
+				
+					<p:commandLink action="#{calculationListController.remove(calculation)}"
+						styleClass="ui-icon ui-icon-closethick" update="exprTable, :calcForm:messages">						
+					</p:commandLink>
+				
+			</p:column>
+		</p:dataTable>
+	</h:form>	
+		
+	</h:body>
+</f:view>
+
+</html>
