@@ -1,0 +1,27 @@
+
+Video presentation - https://www.youtube.com/watch?v=EKGUINzrR2Q&feature=youtu.be
+Sorry, my microphone is broken
+
+Calculator
+
+Technology stack: Spring, Hibernate, JSF, Jetty, hsqldb
+
+Step by step:
+
+1. pom.xml
+2. web.xml
+3. Spring
+4. Hibernate
+5. Repository
+6. Service
+7. ManagedBean
+8. View (JSF)
+
+Start server
+
+1. load from DB (example)
+2. remove
+3. calculation and saving
+4. incorrect expression
+
+Thanks for watching
